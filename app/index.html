@@ -46,7 +46,7 @@
         <div class="stream-section">
           <h4>Favorites</h4>
           <a
-            ng-repeat="(stream, active) in ctrl.favorites | orderBy:''"
+            ng-repeat="(stream, active) in ctrl.favorites"
             ng-class="{ selected: ctrl.isSelected(stream) }"
             ui-sref="streams({ stream: stream })"
           >
@@ -79,12 +79,14 @@
           <i class="stream-title-favorite" ng-class="{ on: ctrl.favorites[ctrl.activeStream] }"></i>
           {{ctrl.activeStream}}
         </div>
+        <button class="btn-stream-line-scroll-x" ng-click="ctrl.toggleXScroll()">Toggle Horizontal Scroll</button>
+        <button class="btn-resume" ng-click="ctrl.resume()" ng-show="ctrl.paused" hotkey="{ space: ctrl.resume }">Resume AutoScroll</button>
         <div class="filter-box">
           <input type="text" ng-model="ctrl.activeStreamRegExp" ng-trim="false" placeholder="filter stream (regexp allowed)">
         </div>
       </div>
 
-      <div class="stream-lines">
+      <div class="stream-lines" ng-style="{ 'overflow-x': ctrl.streamLineXScrollStyle }">
         <div
           class="stream-line"
           ng-repeat="
@@ -112,8 +114,6 @@
           </div>
         </div>
       </div>
-
-      <button class="btn-resume" ng-click="ctrl.resume()" ng-show="ctrl.paused" hotkey="{ space: ctrl.resume }">Resume</button>
     </div>
   </div>
 
@@ -165,7 +165,7 @@
   </script>
 
   <!-- build:js(app) bundle.min.js -->
-  <script src="../node_modules/socket.io/node_modules/socket.io-client/socket.io.js"></script>
+  <script src="../node_modules/socket.io/node_modules/socket.io-client/dist/socket.io.js"></script>
   <script src="../node_modules/jquery/dist/jquery.js"></script>
   <script src="../node_modules/moment/moment.js"></script>
   <script src="../node_modules/localforage/dist/localforage.js"></script>

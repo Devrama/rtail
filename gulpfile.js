@@ -109,7 +109,7 @@ gulp.task('app', ['build:app'], function (done) {
 
   plugins.util.log('spinning rtail client and server ... http://localhost:8888/app')
 
-  var rTailServer = spawn('node', ['--harmony', 'cli/rtail-server.js', '--web-version', 'development'])
+  var rTailServer = spawn('node', ['--harmony', 'cli/rtail-server.js', '--web-version', 'development', '--web-host', '0.0.0.0'])
   rTailServer.stdout.pipe(process.stdout)
   rTailServer.stderr.pipe(process.stdout)
 

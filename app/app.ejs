@@ -95,7 +95,9 @@ angular
       }
 
       $scope.$apply()
-      updateScroll()
+      if (!ctrl.paused) {
+        updateScroll()
+      }
     })
 
     ctrl.selectStream = function selectStream(stream) {
@@ -144,8 +146,13 @@ angular
     }
 
     ctrl.activeStreamFilter = function activeStreamFilter(line) {
+      // only show currently selected stream
+      if (line.streamid !== ctrl.activeStream) {
+        return false
+      }
+
       try {
-        return (new RegExp(ctrl.activeStreamRegExp)).test(line.content)
+        return (new RegExp(ctrl.activeStreamRegExp)).test(JSON.stringify(line.content))
       } catch (err) {
         return true
       }
@@ -179,6 +186,17 @@ angular
       }
 
       $localForage.setItem('favorites', ctrl.favorites)
+    }
+
+    ctrl.toggleXScroll = function toggleXScroll() {
+      let scrollStyle
+      if (ctrl.streamLineXScrollStyle === 'hidden') {
+        scrollStyle = 'auto'
+      } else {
+        scrollStyle = 'hidden'
+      }
+      $localForage.setItem('streamLineXScrollStyle', scrollStyle)
+      ctrl.streamLineXScrollStyle = scrollStyle
     }
 
     ctrl.toggleTimestamp = function toggleTimestamp(stream) {
@@ -226,6 +244,10 @@ angular
      */
     $localForage.getItem('sidebarWidth').then(function (sidebarWidth) {
       ctrl.sidebarWidth = sidebarWidth
+    })
+
+    $localForage.getItem('streamLineXScrollStyle').then(function (streamLineXScrollStyle) {
+      ctrl.streamLineXScrollStyle = streamLineXScrollStyle
     })
 
     $localForage.getItem('theme').then(function (theme) {

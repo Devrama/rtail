@@ -72,6 +72,17 @@
         }
       }
 
+      .btn-stream-line-scroll-x {
+        background-color: $main-color;
+        color: white;
+      }
+
+      .btn-resume {
+        background-color: $main-color;
+        background-image: url('../images/common/icn-resume.svg');
+        color: white;
+      }
+
       .filter-box {
         background-image: url('../images/common/icn-filter.svg');
 
@@ -103,12 +114,6 @@
       background-position: 50%;
       border: 1px solid $stream-view-timestamp-border-color;
       background-image: url('../images/#{$theme}/icn-close-date.svg');
-    }
-
-    .btn-resume {
-      background-color: $main-color;
-      background-image: url('../images/common/icn-resume.svg');
-      color: white;
     }
   }
 

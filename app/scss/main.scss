@@ -204,6 +204,43 @@ header {
       width: 15px;
     }
 
+    .btn-stream-line-scroll-x {
+      display: flex;
+      background-position: 10px 50%;
+      background-repeat: no-repeat;
+      background-size: 8px 10px;
+      border-radius: $border-radius;
+      bottom: $spacing;
+      cursor: pointer;
+      font-size: 14px;
+      height: 30px;
+      padding-left: 25px;
+      // position: absolute;
+      // right: $spacing;
+      margin: auto $spacing;
+      text-align: left;
+      width: 203px;
+    }
+
+    .btn-resume {
+      display: flex;
+      background-position: 10px 50%;
+      background-repeat: no-repeat;
+      background-size: 8px 10px;
+      border-radius: $border-radius;
+      bottom: $spacing;
+      cursor: pointer;
+      font-size: 14px;
+      height: 30px;
+      padding-left: 25px;
+      // position: absolute;
+      // right: $spacing;
+      margin-left: 0;
+      margin-right: auto;
+      text-align: left;
+      width: 170px;
+    }
+
     .filter-box {
       background-position: 0 50%;
       background-repeat: no-repeat;
@@ -271,22 +308,6 @@ header {
     &.closed {
       transform: translateX(-50%) rotate(180deg);
     }
-  }
-
-  .btn-resume {
-    background-position: 10px 50%;
-    background-repeat: no-repeat;
-    background-size: 8px 10px;
-    border-radius: $border-radius;
-    bottom: $spacing;
-    cursor: pointer;
-    font-size: 14px;
-    height: 30px;
-    padding-left: 25px;
-    position: absolute;
-    right: $spacing;
-    text-align: left;
-    width: 85px;
   }
 }
 
